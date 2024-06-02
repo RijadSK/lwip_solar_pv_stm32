@@ -1,0 +1,17 @@
+../Core/Src/http_client.c:157:1:httpc_free_state	24	static
+../Core/Src/http_client.c:192:1:httpc_close	40	static
+../Core/Src/http_client.c:207:1:http_parse_response_status	56	static
+../Core/Src/http_client.c:251:1:http_wait_headers	56	static
+../Core/Src/http_client.c:286:1:httpc_tcp_recv	64	static
+../Core/Src/http_client.c:361:1:httpc_tcp_err	24	static
+../Core/Src/http_client.c:373:1:httpc_tcp_poll	24	static
+../Core/Src/http_client.c:391:1:httpc_tcp_sent	24	static
+../Core/Src/http_client.c:402:1:httpc_tcp_connected	32	static
+../Core/Src/http_client.c:425:1:httpc_get_internal_addr	24	static
+../Core/Src/http_client.c:474:1:httpc_get_internal_dns	24	static
+../Core/Src/http_client.c:495:1:httpc_create_request_string	40	static
+../Core/Src/http_client.c:515:1:httpc_init_connection_common	64	static
+../Core/Src/http_client.c:603:1:httpc_init_connection	40	static
+../Core/Src/http_client.c:614:1:httpc_init_connection_addr	48	static
+../Core/Src/http_client.c:641:1:httpc_get_file	48	static
+../Core/Src/http_client.c:686:1:httpc_get_file_dns	48	static
