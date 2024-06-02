@@ -1,8 +1,14 @@
 .metadata
 bin/
 tmp/
+Debug/
+*.elf
+*.cyclo
+*.su
+*.list
 *.tmp
 *.bak
+*.map
 *.swp
 *~.nib
 local.properties

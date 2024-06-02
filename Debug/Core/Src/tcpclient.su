@@ -1,5 +1,0 @@
-../Core/Src/tcpclient.c:24:7:my_http_cb	32	static
-../Core/Src/tcpclient.c:34:6:my_httpc_result_fn	24	static
-../Core/Src/tcpclient.c:41:7:my_httpc_headers_done_fn	24	static
-../Core/Src/tcpclient.c:47:13:tcpinit_thread	208	static
-../Core/Src/tcpclient.c:83:6:tcpclient_init	16	static

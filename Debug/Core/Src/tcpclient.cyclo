@@ -1,5 +1,0 @@
-../Core/Src/tcpclient.c:24:7:my_http_cb	2
-../Core/Src/tcpclient.c:34:6:my_httpc_result_fn	1
-../Core/Src/tcpclient.c:41:7:my_httpc_headers_done_fn	1
-../Core/Src/tcpclient.c:47:13:tcpinit_thread	2
-../Core/Src/tcpclient.c:83:6:tcpclient_init	1
