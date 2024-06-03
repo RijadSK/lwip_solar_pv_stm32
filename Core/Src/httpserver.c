@@ -1,5 +1,5 @@
-
 /* Includes ------------------------------------------------------------------*/
+#include <app_defines.h>
 #include "lwip/opt.h"
 #include "lwip/arch.h"
 #include "lwip/api.h"
@@ -7,9 +7,6 @@
 #include "string.h"
 #include "httpserver.h"
 #include "cmsis_os.h"
-#include "tcp_defines.h"
-
-int indx = 0;
 
 static void http_server(struct netconn *conn)
 {
@@ -17,10 +14,7 @@ static void http_server(struct netconn *conn)
 	err_t recv_err;
 	char* buf;
 	u16_t buflen;
-	struct fs_file file;
-
-	char pagedata[512]={0};
-	char response_int[10]={0};
+	char pagedata[128]={0};
 
 	/* Read the data from the port, blocking if nothing yet there */
 	recv_err = netconn_recv(conn, &inbuf);
@@ -36,13 +30,16 @@ static void http_server(struct netconn *conn)
 
 				int len_pagedata = 0;
 				len_pagedata += sprintf((char *)pagedata, "HTTP/1.1 200 OK\r\n");
-				int len = sprintf (response_int, "%d", indx++);
-				len_pagedata += strncat((char*)pagedata, "Content-Length: %d\r\n", len);
+				char len_msg[3] = {0};
+				sprintf(len_msg, "%d", strlen((char*)pv_estimate));
+				len_pagedata += strcat((char*)pagedata, "Content-Length: ");
+				len_pagedata += strcat((char*)pagedata, len_msg);
+				len_pagedata += strcat((char*)pagedata,	"\r\n");//, strlen((char*)msg_rest_api));
 				len_pagedata += strcat((char *)pagedata, "Content-Type: text/plain; charset=utf-8\r\n\r\n");
-				len_pagedata += strcat((char*)pagedata, response_int);
+				len_pagedata += strcat((char*)pagedata, pv_estimate);
 
 
-				int netconn_rv = netconn_write(conn, (const unsigned char*)pagedata, strlen((char*)pagedata), NETCONN_COPY);
+				netconn_write(conn, (const unsigned char*)pagedata, strlen((char*)pagedata), NETCONN_COPY);
 			}
 		}
 	}
@@ -58,7 +55,7 @@ static void http_server(struct netconn *conn)
 static void http_thread(void *arg)
 { 
 	struct netconn *newconn;
-	err_t err, accept_err;
+	err_t accept_err;
 
 	if (conn!= NULL)
 	{

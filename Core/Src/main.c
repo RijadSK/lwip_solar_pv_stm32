@@ -17,15 +17,16 @@
  */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <app_defines.h>
+#include <rest_api_client.h>
 #include "main.h"
 #include "cmsis_os.h"
 #include "lwip.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "tcp_defines.h"
 #include "httpserver.h"
-#include "tcpclient.h"
+#include "rest_api_client.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,7 +99,6 @@ static void MX_I2C3_Init(void);
 static void MX_LTDC_Init(void);
 static void MX_QUADSPI_Init(void);
 static void MX_RTC_Init(void);
-static void MX_SDMMC1_SD_Init(void);
 static void MX_SPDIFRX_Init(void);
 static void MX_SPI2_Init(void);
 static void MX_TIM1_Init(void);
@@ -170,7 +170,6 @@ int main(void)
 	MX_LTDC_Init();
 	MX_QUADSPI_Init();
 	MX_RTC_Init();
-	//  MX_SDMMC1_SD_Init();
 	MX_SPDIFRX_Init();
 	MX_SPI2_Init();
 	MX_TIM1_Init();
@@ -701,42 +700,6 @@ static void MX_RTC_Init(void)
 	/* USER CODE BEGIN RTC_Init 2 */
 
 	/* USER CODE END RTC_Init 2 */
-
-}
-
-/**
- * @brief SDMMC1 Initialization Function
- * @param None
- * @retval None
- */
-static void MX_SDMMC1_SD_Init(void)
-{
-
-	/* USER CODE BEGIN SDMMC1_Init 0 */
-
-	/* USER CODE END SDMMC1_Init 0 */
-
-	/* USER CODE BEGIN SDMMC1_Init 1 */
-
-	/* USER CODE END SDMMC1_Init 1 */
-	hsd1.Instance = SDMMC1;
-	hsd1.Init.ClockEdge = SDMMC_CLOCK_EDGE_RISING;
-	hsd1.Init.ClockBypass = SDMMC_CLOCK_BYPASS_DISABLE;
-	hsd1.Init.ClockPowerSave = SDMMC_CLOCK_POWER_SAVE_DISABLE;
-	hsd1.Init.BusWide = SDMMC_BUS_WIDE_4B;
-	hsd1.Init.HardwareFlowControl = SDMMC_HARDWARE_FLOW_CONTROL_DISABLE;
-	hsd1.Init.ClockDiv = 0;
-	if (HAL_SD_Init(&hsd1) != HAL_OK)
-	{
-		Error_Handler();
-	}
-	if (HAL_SD_ConfigWideBusOperation(&hsd1, SDMMC_BUS_WIDE_4B) != HAL_OK)
-	{
-		Error_Handler();
-	}
-	/* USER CODE BEGIN SDMMC1_Init 2 */
-
-	/* USER CODE END SDMMC1_Init 2 */
 
 }
 
